@@ -1,0 +1,9 @@
+{
+  "name": "website-audit",
+  "version": "0.1.0",
+  "description": "Audit any website the way a good agency would, in about ten minutes. Opens the real site, looks at it on a phone, tests the five second question, checks speed, SEO, trust and the path to contacting you, then hands back one prioritized list and a straight verdict: fix this or rebuild it.",
+  "author": { "name": "Build With Nav" },
+  "homepage": "https://buildwithnav.com",
+  "license": "MIT",
+  "keywords": ["website-audit", "cro", "seo", "conversion", "small-business", "local-business", "site-review", "ux-audit"]
+}
