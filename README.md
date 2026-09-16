@@ -1,4 +1,11 @@
-# Website Audit
+<img src="assets/banner.png" alt="Website Audit — Build With Nav" width="100%">
+
+<p>
+<img alt="Licence MIT" src="https://img.shields.io/badge/licence-MIT-FF4500?style=flat-square">
+<img alt="Claude plugin" src="https://img.shields.io/badge/Claude-plugin-0D0D0D?style=flat-square">
+<img alt="Free" src="https://img.shields.io/badge/works%20on-free%20Claude-0E7A4A?style=flat-square">
+<img alt="Built With Nav" src="https://img.shields.io/badge/built%20by-Build%20With%20Nav-FF4500?style=flat-square">
+</p>
 
 **Audit any website the way a good agency would, in about ten minutes.**
 
