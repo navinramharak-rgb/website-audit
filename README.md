@@ -1,42 +1,62 @@
 # Website Audit
 
-Audit any website the way a good agency would, in about ten minutes.
+**Audit any website the way a good agency would, in about ten minutes.**
 
-It opens the real site, looks at it on a phone, tests whether a stranger can work out what you sell in five seconds, counts the taps to contacting you, checks speed, search, trust and mobile, then hands back one prioritized list and a straight answer: **fix this, or rebuild it.**
+Most website advice is a checklist somebody hands you and never applies. This opens your actual site, looks at it on a phone, and comes back with a short list of what to fix in what order, plus a straight answer: **fix this, or rebuild it.**
 
-Built for business owners, not marketers. Every finding is written in plain English, quotes what it actually found on the page, and comes with the specific change to make.
-
-## Install
+Built for business owners, not marketers.
 
 ```
 /plugin marketplace add navinramharak-rgb/website-audit
 ```
 
-Then: `audit my website, it's example.com`
+Then say: **"audit my website, it's yoursite.com"**
 
-## What it checks
+---
 
-1. **The five second test** — can a stranger tell what you sell, who it's for, and what to do next, from the first screen on a phone
-2. **The path to contact** — taps to reach you, tap-to-call, form length, one clear action or four competing ones
-3. **Mobile** — overflow, text size, tap targets, popups
-4. **Speed** — page weight, the single biggest offender, named
-5. **Found in search** — titles, descriptions, headings, indexability, sitemap, alt text
-6. **Trust** — real reviews, real photos, real address, proof, pricing
-7. **Local** — city in the title, service area pages, address consistency, Google Business Profile
+## The key to this skill
 
-## What makes it different
+- **It actually looks.** Opens the real site at desktop and phone width. Never audits from the URL alone.
+- **The five second test.** From the first screen on a phone: what do you sell, who is it for, what do I do next. If a stranger can't answer all three, that's finding number one, above every technical issue.
+- **It counts the taps to reach you.** And checks whether your phone number is a real tap-to-call link or just text sitting on a page.
+- **It ends with a decision, not a checklist.** Fix or rebuild. Everyone else hands you thirty findings. Nobody tells you which of the two jobs you're actually on.
+- **Three things, not thirty.** Ranked hard, with what each one costs you and roughly how long it takes.
+- **It never invents a number.** No made-up load times, traffic estimates or rankings. It measures it or says it couldn't.
 
-Most SEO and CRO skills are frameworks you apply yourself. This one goes and looks, and it ends with a decision instead of a checklist.
+---
 
-It also knows what it can't see. Schema markup injected by JavaScript is invisible to a plain fetch, so it either checks it in a rendered browser or says it couldn't verify. It never reports a problem it didn't observe.
+## The seven lenses
+
+| Lens | What it answers | Weight |
+|---|---|---|
+| Five second test | Can a stranger tell what you sell? | 25% |
+| Path to contact | How hard is it to actually reach you? | 20% |
+| Trust | Is there any proof you're real and good? | 15% |
+| Mobile | Does it work on the thing people use? | 15% |
+| Found in search | Can Google describe you properly? | 15% |
+| Speed | What's the single biggest offender? | 10% |
+| Local | City, service areas, address consistency | folded in |
+
+You get a score out of 100 with the breakdown shown, so it isn't a black box.
+
+## What comes back
+
+One self-contained HTML page you could forward to a developer: the verdict, the three things to do this week, both screenshots side by side, then everything else honestly labelled as the later pile.
+
+Every finding has three parts. **What's there** (quoted). **What it costs** (in enquiries, not in rules). **The fix** (written out, not described). A finding with no fix is a complaint, so it gets cut.
+
+## What it knows it can't see
+
+Schema markup injected by JavaScript is invisible to a plain fetch, because fetching tools strip `<script>` tags. So it either checks in a rendered browser or says it couldn't verify. Reporting "no schema found" from a plain fetch is the most common false finding in automated audits, and this skill refuses to produce it.
 
 ## Chains with
 
-- **[local-seo](https://github.com/navinramharak-rgb/local-seo)** — for local businesses, where the Google Business Profile is usually doing more work than the website
-- **[50k-website-builder](https://github.com/navinramharak-rgb/50k-website-builder)** — when the verdict is rebuild, the audit becomes the brief
+1. **Website Audit** ← you are here. Find out what's actually wrong.
+2. **[Local SEO](https://github.com/navinramharak-rgb/local-seo)** — for local businesses, where the Google Business Profile usually does more work than the website. Free, takes an hour.
+3. **[50k Website Builder](https://github.com/navinramharak-rgb/50k-website-builder)** — when the verdict is rebuild, hand it this audit as the brief instead of starting from a blank page.
 
-For much deeper technical SEO (hreflang, crawl budget, international), use [Corey Haines' marketing skills](https://github.com/coreyhaines31/marketingskills). Excellent library, and this skill points at it rather than duplicating it.
+For much deeper technical SEO (hreflang, crawl budget, international, programmatic pages), use [Corey Haines' marketing skills](https://github.com/coreyhaines31/marketingskills). Excellent library that goes further on that axis. This skill points at it rather than duplicating it.
 
-## Licence
+---
 
-MIT. Built by [Build With Nav](https://buildwithnav.com).
+MIT licence. Built by [Build With Nav](https://buildwithnav.com).

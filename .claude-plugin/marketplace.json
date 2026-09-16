@@ -1,0 +1,24 @@
+{
+  "name": "website-audit",
+  "owner": {
+    "name": "Navin Ramharak (Build With Nav)",
+    "url": "https://buildwithnav.com"
+  },
+  "description": "Audit any website the way a good agency would, in about ten minutes, and end with a straight fix-or-rebuild verdict.",
+  "version": "1.0.0",
+  "plugins": [
+    {
+      "name": "website-audit",
+      "source": "./",
+      "displayName": "Website Audit",
+      "description": "Opens your real site, looks at it on a phone, and tells you what to fix first plus whether to rebuild.",
+      "version": "1.0.0",
+      "author": { "name": "Navin Ramharak (Build With Nav)", "url": "https://buildwithnav.com" },
+      "homepage": "https://buildwithnav.com/yeg/fixes",
+      "repository": "https://github.com/navinramharak-rgb/website-audit",
+      "license": "MIT",
+      "keywords": ["website-audit", "cro", "conversion", "seo", "small-business", "local-business", "site-review", "mobile"],
+      "category": "marketing"
+    }
+  ]
+}
