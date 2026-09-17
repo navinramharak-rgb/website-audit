@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{BUSINESS}} — Website Audit</title>
+<!--
+  AUDIT REPORT TEMPLATE. Fill every {{TOKEN}}. Delete any block you have nothing for.
+  Everything is inline on purpose: no fonts, no scripts, no CDN. It has to open offline
+  and survive being forwarded as an attachment.
+
+  TOKENS
+    {{BUSINESS}} {{URL}} {{DATE}} {{SCORE}} {{SCORE_DASH}} {{VERDICT}} {{VERDICT_CLASS}}
+    {{VERDICT_LINE}} {{SHOT_DESKTOP}} {{SHOT_PHONE}}
+  {{SCORE_DASH}} is the stroke-dasharray for the ring: (SCORE * 3.39) then a space then 339.
+    A score of 62 gives: 210 339
+  {{VERDICT_CLASS}} is fix or rebuild.
+  Severity classes on findings: sev-high, sev-med, sev-low.
+-->
+<style>
+:root{
+  --ink:#16161a; --body:#42424a; --soft:#6f6f7a; --faint:#9a9aa5;
+  --line:#e6e6ea; --bg:#ffffff; --panel:#fafafb;
+  --accent:#e2522b; --good:#1f9d63; --warn:#d4901f; --bad:#d13b2e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  background:var(--panel); color:var(--body);
+  font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+.page{max-width:860px;margin:0 auto;background:var(--bg);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.pad{padding:56px 64px}
+@media(max-width:700px){.pad{padding:34px 22px}}
+h1,h2,h3{color:var(--ink);letter-spacing:-.02em;line-height:1.15;font-weight:800}
+h2{font-size:26px;margin-bottom:8px}
+h3{font-size:18px;margin-bottom:6px}
+p+p{margin-top:12px}
+a{color:var(--accent)}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.rule{height:1px;background:var(--line);margin:0}
+
+/* ---------- masthead + score ---------- */
+.mast{display:flex;gap:44px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.mast .who{flex:1;min-width:240px}
+.mast h1{font-size:34px;margin:10px 0 6px}
+.mast .url{font-size:15px;color:var(--soft);word-break:break-all}
+.ring{position:relative;width:132px;height:132px;flex:0 0 132px}
+.ring svg{transform:rotate(-90deg)}
+.ring .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring .num b{font-size:40px;font-weight:800;color:var(--ink);letter-spacing:-.04em;line-height:1}
+.ring .num span{font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:3px}
+
+.verdict{margin-top:34px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:20px 24px;background:var(--panel)}
+.verdict .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:5px;color:#fff;background:var(--accent)}
+.verdict.rebuild{border-left-color:var(--bad)}
+.verdict.rebuild .tag{background:var(--bad)}
+.verdict p{margin-top:12px;color:var(--ink);font-size:17px;font-weight:600}
+
+/* ---------- the three ---------- */
+.three{display:grid;gap:16px}
+.fixcard{border:1px solid var(--line);border-radius:12px;padding:22px 24px;background:#fff;position:relative}
+.fixcard .n{position:absolute;top:22px;right:24px;font-size:34px;font-weight:800;color:var(--line);letter-spacing:-.04em;line-height:1}
+.fixcard h3{padding-right:52px}
+.fixcard .meta{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 14px}
+.chip{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:5px;background:var(--panel);color:var(--soft);border:1px solid var(--line)}
+.chip.cost{color:var(--bad);border-color:#f3d5d1;background:#fdf4f3}
+.chip.time{color:var(--good);border-color:#cfeade;background:#f2fbf6}
+.fixcard dl{display:grid;gap:10px;margin-top:4px}
+.fixcard dt{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:2px}
+.fixcard dd{color:var(--body)}
+.quote{background:var(--panel);border-left:3px solid var(--line);padding:10px 14px;border-radius:0 6px 6px 0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;color:var(--ink);word-break:break-word}
+.do{background:#f2fbf6;border-left:3px solid var(--good);padding:10px 14px;border-radius:0 6px 6px 0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;color:#14532d;word-break:break-word}
+
+/* ---------- screenshots ---------- */
+.shots{display:grid;grid-template-columns:1fr 200px;gap:26px;align-items:start}
+@media(max-width:700px){.shots{grid-template-columns:1fr}}
+.shot{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.shot .bar{display:flex;align-items:center;gap:5px;padding:9px 12px;border-bottom:1px solid var(--line);background:#fff}
+.shot .bar i{width:8px;height:8px;border-radius:50%;background:#e0e0e6;display:block}
+.shot .bar span{margin-left:8px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.shot img{display:block;width:100%;height:auto}
+.shot.phone{border-radius:18px}
+.shot.phone img{border-radius:0 0 16px 16px}
+
+/* ---------- lenses ---------- */
+.lens{border-top:1px solid var(--line);padding:26px 0}
+.lens:first-of-type{border-top:0}
+.lens .head{display:flex;align-items:center;gap:16px;justify-content:space-between}
+.lens .head h3{margin:0}
+.lens .score{font-size:14px;font-weight:800;color:var(--ink);white-space:nowrap}
+.lens .score em{font-style:normal;color:var(--faint);font-weight:700}
+.bar{height:5px;border-radius:3px;background:var(--line);margin:12px 0 18px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px;background:var(--good)}
+.bar i.mid{background:var(--warn)} .bar i.low{background:var(--bad)}
+.finding{padding:16px 0;border-top:1px dashed var(--line)}
+.finding:first-of-type{border-top:0}
+.finding .t{display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+.finding .t b{color:var(--ink);font-size:16px}
+.sev{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:4px}
+.sev-high{background:#fdf0ee;color:var(--bad)}
+.sev-med{background:#fdf7e9;color:#96660f}
+.sev-low{background:var(--panel);color:var(--soft)}
+.clean{color:var(--good);font-weight:700}
+
+/* ---------- table + later + next ---------- */
+table{width:100%;border-collapse:collapse;margin-top:18px;font-size:14.5px}
+th{text-align:left;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);padding:0 0 10px;border-bottom:1px solid var(--line)}
+td{padding:11px 0;border-bottom:1px solid var(--line);color:var(--body)}
+td:first-child{color:var(--ink);font-weight:600}
+td:last-child,th:last-child{text-align:right}
+.later li{margin:0 0 12px 20px}
+.later li b{color:var(--ink)}
+.next{background:var(--ink);color:#fff;border-radius:12px;padding:28px 30px}
+.next h3{color:#fff;margin-bottom:10px}
+.next p{color:#c9c9d2}
+.next code{background:rgba(255,255,255,.12);padding:2px 7px;border-radius:4px;font-size:14px;color:#fff}
+.foot{font-size:12.5px;color:var(--faint);text-align:center;padding:26px 20px 40px}
+.caveat{font-size:13.5px;color:var(--soft);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin-top:20px}
+
+@media print{
+  body{background:#fff}
+  .page{box-shadow:none;max-width:none}
+  .pad{padding:26px 0}
+  .fixcard,.lens,.next{break-inside:avoid}
+  .next{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+  .next h3,.next p{color:var(--ink)}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ 1. MASTHEAD + SCORE + VERDICT ============ -->
+  <div class="pad">
+    <div class="mast">
+      <div class="who">
+        <div class="eyebrow">Website audit · {{DATE}}</div>
+        <h1>{{BUSINESS}}</h1>
+        <div class="url">{{URL}}</div>
+      </div>
+      <div class="ring">
+        <svg width="132" height="132" viewBox="0 0 132 132">
+          <circle cx="66" cy="66" r="54" fill="none" stroke="#e6e6ea" stroke-width="11"/>
+          <circle cx="66" cy="66" r="54" fill="none" stroke="#e2522b" stroke-width="11"
+                  stroke-linecap="round" stroke-dasharray="{{SCORE_DASH}}"/>
+        </svg>
+        <div class="num"><b>{{SCORE}}</b><span>out of 100</span></div>
+      </div>
+    </div>
+
+    <div class="verdict {{VERDICT_CLASS}}">
+      <span class="tag">{{VERDICT}}</span>
+      <p>{{VERDICT_LINE}}</p>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ============ 2. THE THREE ============ -->
+  <div class="pad">
+    <div class="eyebrow">Start here</div>
+    <h2>Fix these three this week</h2>
+    <p style="margin:6px 0 24px">Everything else on this page can wait. These three are where the lost enquiries are.</p>
+
+    <div class="three">
+      <!-- REPEAT this card three times -->
+      <div class="fixcard">
+        <div class="n">1</div>
+        <h3>{{FIX_TITLE}}</h3>
+        <div class="meta">
+          <span class="chip cost">{{FIX_COST}}</span>
+          <span class="chip time">{{FIX_EFFORT}}</span>
+        </div>
+        <dl>
+          <div><dt>What's there now</dt><dd><div class="quote">{{FIX_CURRENT}}</div></dd></div>
+          <div><dt>What it's costing you</dt><dd>{{FIX_WHY}}</dd></div>
+          <div><dt>Change it to</dt><dd><div class="do">{{FIX_DO}}</div></dd></div>
+        </dl>
+      </div>
+      <!-- /REPEAT -->
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ============ 3. WHAT IT LOOKS LIKE ============ -->
+  <div class="pad">
+    <div class="eyebrow">What a customer sees</div>
+    <h2>Desktop and phone</h2>
+    <p style="margin:6px 0 24px">{{SHOTS_NOTE}}</p>
+    <div class="shots">
+      <div class="shot">
+        <div class="bar"><i></i><i></i><i></i><span>Desktop · 1440px</span></div>
+        <img src="{{SHOT_DESKTOP}}" alt="Desktop view">
+      </div>
+      <div class="shot phone">
+        <div class="bar"><span>Phone · 390px</span></div>
+        <img src="{{SHOT_PHONE}}" alt="Phone view">
+      </div>
+    </div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ============ 4. THE SEVEN LENSES ============ -->
+  <div class="pad">
+    <div class="eyebrow">The detail</div>
+    <h2>Seven things I checked</h2>
+
+    <table>
+      <tr><th>Lens</th><th>Score</th></tr>
+      <!-- REPEAT one row per lens -->
+      <tr><td>{{LENS_NAME}}</td><td>{{LENS_SCORE}} / {{LENS_MAX}}</td></tr>
+      <!-- /REPEAT -->
+      <tr><td><b>Total</b></td><td><b>{{SCORE}} / 100</b></td></tr>
+    </table>
+
+    <div style="margin-top:34px">
+      <!-- REPEAT one block per lens -->
+      <div class="lens">
+        <div class="head">
+          <h3>{{LENS_NAME}}</h3>
+          <div class="score">{{LENS_SCORE}}<em> / {{LENS_MAX}}</em></div>
+        </div>
+        <div class="bar"><i class="{{LENS_BAR_CLASS}}" style="width:{{LENS_PCT}}%"></i></div>
+
+        <!-- REPEAT one per finding, or use the clean line below -->
+        <div class="finding">
+          <div class="t"><b>{{FINDING_TITLE}}</b><span class="sev sev-high">{{FINDING_SEV}}</span></div>
+          <div class="quote">{{FINDING_CURRENT}}</div>
+          <p style="margin-top:10px">{{FINDING_WHY}}</p>
+          <div class="do" style="margin-top:10px">{{FINDING_FIX}}</div>
+        </div>
+        <!-- /REPEAT -->
+
+        <!-- when a lens is clean, use only this line and no findings -->
+        <p class="clean">Nothing to fix here.</p>
+      </div>
+      <!-- /REPEAT -->
+    </div>
+
+    <!-- anything you could not check goes here, never silently omitted -->
+    <div class="caveat"><b>What I couldn't check:</b> {{CAVEATS}}</div>
+  </div>
+
+  <div class="rule"></div>
+
+  <!-- ============ 5. LATER ============ -->
+  <div class="pad">
+    <div class="eyebrow">Not urgent</div>
+    <h2>The later pile</h2>
+    <p style="margin:6px 0 20px">Real, worth doing, and none of it is why the phone isn't ringing. Come back to these once the three above are done.</p>
+    <ul class="later">
+      <!-- REPEAT -->
+      <li><b>{{LATER_TITLE}}.</b> {{LATER_DETAIL}}</li>
+      <!-- /REPEAT -->
+    </ul>
+  </div>
+
+  <div class="pad" style="padding-top:0">
+    <div class="next">
+      <h3>{{NEXT_TITLE}}</h3>
+      <p>{{NEXT_BODY}}</p>
+    </div>
+  </div>
+
+  <div class="foot">Audited {{DATE}} · every finding on this page was taken from the live site, not from memory.</div>
+</div>
+</body>
+</html>

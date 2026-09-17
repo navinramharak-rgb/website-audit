@@ -1,52 +1,83 @@
 # The report
 
-One self-contained HTML page. Both screenshots embedded as data URIs. No external scripts or stylesheets, so it works when they forward it or open it offline.
+The report is the product. Everything before this was research. If the report looks thrown together, the findings do not get acted on, no matter how good they are.
 
-## Order
+**Start from `report-template.html`.** Read it, copy it, fill every `{{TOKEN}}`, delete the blocks you have nothing for. Do not design a new layout each time. The template is already checked for mobile, for print, and for the case where a lens comes back clean.
 
-1. **Verdict bar** — score out of 100, the word FIX or REBUILD, and one sentence.
-2. **The three things to do this week** — the whole value of the report. Each one: what to change, what it is costing, roughly how long.
-3. **The two screenshots, side by side**, desktop and phone, labelled.
-4. **The seven lenses**, each with its sub-score and its findings.
-5. **Everything else** — the full list, ordered by impact, honestly labelled as the "later" pile.
-6. **What to do next** — the handoff, named: run `local-seo`, or rebuild with `build-premium-site`.
+---
+
+## Hard rules for the file
+
+- **One self-contained HTML file.** No external stylesheets, scripts, fonts or images. It has to open with no internet, from an email attachment, five months from now.
+- **Both screenshots embedded as base64 data URIs**, desktop and phone. Not linked. Resize to about 1200px wide and compress before encoding so the file stays under roughly 5MB.
+- **Print works.** The template has a print stylesheet. Do not break it. People forward these to a web developer who prints them.
+- **Name the file** `[business-name]-website-audit-[YYYY-MM-DD].html`.
+
+---
+
+## Order, which is not negotiable
+
+1. **Masthead** — business, URL, date, score ring, verdict box.
+2. **Fix these three this week.** The whole value of the report. Nothing above it.
+3. **The two screenshots**, desktop and phone, side by side.
+4. **The seven lenses** — score table first, then the findings under each lens.
+5. **What I couldn't check.** Never silently omit a failed check.
+6. **The later pile**, honestly labelled as not urgent.
+7. **What to do next** — the named handoff.
+
+The reason "the three" sits above the detail: an owner reads the top of a report and skims the rest. Put the money at the top.
+
+---
 
 ## How a finding is written
 
-Three parts, always, in this order:
+Three parts, always, in this order. The template enforces the shape.
 
-**What's there.** Quote it. `Your title tag currently reads "Home | Welcome"`.
+**What's there.** Quote it. Actual text from the actual page, in the monospace box. `Your title tag currently reads "Home | Welcome"`.
 
 **What it costs.** In enquiries or money, not in rules. "That is the line Google shows in search results. Right now it tells someone searching for a mobile detailer in Edmonton nothing at all, so they click the next result."
 
-**The fix.** Specific enough to act on today. Write the replacement, do not describe it. `Change it to: "Mobile Car Detailing in Edmonton | Star Wash"`.
+**The fix.** Write the replacement, do not describe it. `Change it to: "Mobile Car Detailing in Edmonton | Star Wash"`. If it is code, give the code.
 
 A finding with no fix is not a finding, it is a complaint. Cut it.
+
+### Severity
+Every finding gets `sev-high`, `sev-med` or `sev-low`. Use them honestly. If everything is high, nothing is.
+
+- **High** — costing enquiries right now.
+- **Med** — costing some, or will as they grow.
+- **Low** — worth doing, nobody is losing money over it today.
+
+---
+
+## The score
+
+Show the breakdown table so the number is not a black box. Set `{{SCORE_DASH}}` to `SCORE × 3.39` then a space then `339`, so the ring matches the number. A 62 is `210 339`.
+
+Bar colour classes: leave the class off above 70%, use `mid` between 40 and 70, `low` below 40.
+
+Do not be generous. A 54 that leads to three real fixes beats a flattering 85.
+
+---
 
 ## Tone
 
 Write to the owner, not to a developer. Second person. Short sentences.
 
-Never use the word "leverage", "unlock", "game-changer" or "supercharge". No em dashes.
+No "leverage", "unlock", "game-changer" or "supercharge". No em dashes.
 
 Translate every technical term on first use, in the same sentence: "your H1, which is the one big headline at the top of the page".
 
 Be direct about bad news and immediately constructive. "This site is invisible to Google right now, and here is the one line that fixes it" is the shape.
 
-Do not pad. If a lens found nothing wrong, say "nothing to fix here" and move on. That is a good result and it builds trust in the findings that do matter.
+Do not pad. If a lens found nothing wrong, use the "Nothing to fix here" line and move on. That is a good result and it makes the findings that do matter more believable.
 
-## Scoring display
-
-Show the breakdown as a small table so the number is not a black box:
-
-| Lens | Score | Weight |
-|---|---|---|
-| Five second test | 12 / 25 | 25% |
-| ... | | |
+---
 
 ## What not to put in it
 
-- No made-up traffic numbers, load times, rankings or conversion rates
-- No "best practices" with no specific change attached
-- No thirty item list presented as equally urgent
-- No praise that is not true. If the design is dated, do not open with "great looking site"
+- No made-up traffic numbers, load times, rankings or conversion rates. If you did not measure it, it goes in the caveats box.
+- No "best practices" with no specific change attached.
+- No thirty item list presented as equally urgent.
+- No praise that is not true. If the design is dated, do not open with "great looking site".
+- No placeholder left in. Search the finished file for `{{` before you hand it over.

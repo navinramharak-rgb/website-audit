@@ -153,9 +153,11 @@ Do not hedge. The whole reason someone asks is that they cannot make this call t
 
 ## Step 6. The report
 
-Read `references/report-format.md` for the exact structure and tone.
+Read `references/report-format.md` for the rules, then build the page from `references/report-template.html`.
 
-Deliver it as a single HTML page, self-contained, with the two screenshots embedded. Keep it something they could forward to a web developer and have it be useful.
+The template is the design. Copy it, fill every `{{TOKEN}}`, delete the blocks you have nothing for. Do not invent a new layout: this one is already checked for mobile, for print, and for the case where a lens comes back clean. Search the finished file for `{{` before handing it over.
+
+One self-contained HTML file, both screenshots embedded as base64 data URIs, no external anything. It has to open offline, from an email attachment, months from now. Name it `[business-name]-website-audit-[YYYY-MM-DD].html`.
 
 Lead with:
 1. The score and the verdict

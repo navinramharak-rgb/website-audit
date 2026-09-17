@@ -28,6 +28,7 @@ Then say: **"audit my website, it's yoursite.com"**
 - **It counts the taps to reach you.** And checks whether your phone number is a real tap-to-call link or just text sitting on a page.
 - **It ends with a decision, not a checklist.** Fix or rebuild. Everyone else hands you thirty findings. Nobody tells you which of the two jobs you're actually on.
 - **Three things, not thirty.** Ranked hard, with what each one costs you and roughly how long it takes.
+- **You get a report, not a chat.** One HTML file with a score, both screenshots, every finding quoted from your actual page, and a fix written out ready to paste. Opens offline, prints properly, forwards to a developer and still makes sense.
 - **It never invents a number.** No made-up load times, traffic estimates or rankings. It measures it or says it couldn't.
 
 ---
