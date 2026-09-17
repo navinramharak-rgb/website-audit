@@ -15,6 +15,32 @@ The report is the product. Everything before this was research. If the report lo
 
 ---
 
+## The design is not yours to change
+
+The palette, the type, the spacing and the structure are already set in `report-template.html`. Use them.
+
+White background. Black text. One orange accent, `#FF4500`. That is it.
+
+Do not invent a dark theme, a different accent colour, a gradient, a card shape or a font. A report that looks different every time looks improvised, and an improvised-looking report does not get acted on. The tokens are at the top of the template:
+
+```
+--ink:#0D0D0D  --body:#3A3A3A  --soft:#505050  --faint:#909090
+--line:#E8E2D9  --bg:#FFFFFF  --panel:#F8F6F2
+--accent:#FF4500  --good:#0E7A4A  --warn:#B8860B  --bad:#CC3600
+```
+
+If you find yourself writing new CSS, stop. Fill the tokens, repeat the blocks, delete what you do not need.
+
+## Screenshots
+
+The screenshots section is optional and it is all or nothing.
+
+Keep it only if both images are embedded as base64 data URIs inside the file. If you could not capture them, or the tool saved them to disk instead of giving you the bytes, **delete the whole section** and put one line in the caveats box saying the screenshots are not embedded and why.
+
+Never ship empty frames, a file path, or a link to an image on your own machine. The person opening this file cannot see your disk.
+
+---
+
 ## Order, which is not negotiable
 
 1. **Masthead** — business, URL, date, score ring, verdict box.

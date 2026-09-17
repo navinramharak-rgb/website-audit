@@ -155,7 +155,9 @@ Do not hedge. The whole reason someone asks is that they cannot make this call t
 
 Read `references/report-format.md` for the rules, then build the page from `references/report-template.html`.
 
-The template is the design. Copy it, fill every `{{TOKEN}}`, delete the blocks you have nothing for. Do not invent a new layout: this one is already checked for mobile, for print, and for the case where a lens comes back clean. Search the finished file for `{{` before handing it over.
+**The template is the design. Do not restyle it.** White background, black text, one orange accent (`#FF4500`). No dark theme, no other accent colour, no new fonts or card shapes. Copy the file, fill every `{{TOKEN}}`, repeat the blocks that repeat, delete what you have nothing for. If you are writing new CSS, you have gone wrong. Search the finished file for `{{` before handing it over.
+
+The screenshots section is optional and all or nothing: keep it only if both images are embedded as base64 data URIs, otherwise delete the whole section and say why in the caveats box. Never ship an empty frame or a path to a file on your own machine.
 
 One self-contained HTML file, both screenshots embedded as base64 data URIs, no external anything. It has to open offline, from an email attachment, months from now. Name it `[business-name]-website-audit-[YYYY-MM-DD].html`.
 

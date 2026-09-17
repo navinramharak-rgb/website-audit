@@ -19,9 +19,9 @@
 -->
 <style>
 :root{
-  --ink:#16161a; --body:#42424a; --soft:#6f6f7a; --faint:#9a9aa5;
-  --line:#e6e6ea; --bg:#ffffff; --panel:#fafafb;
-  --accent:#e2522b; --good:#1f9d63; --warn:#d4901f; --bad:#d13b2e;
+  --ink:#0D0D0D; --body:#3A3A3A; --soft:#505050; --faint:#909090;
+  --line:#E8E2D9; --bg:#FFFFFF; --panel:#F8F6F2;
+  --accent:#FF4500; --accent-d:#CC3600; --good:#0E7A4A; --warn:#B8860B; --bad:#CC3600;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -64,20 +64,20 @@ a{color:var(--accent)}
 .fixcard h3{padding-right:52px}
 .fixcard .meta{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 14px}
 .chip{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:5px;background:var(--panel);color:var(--soft);border:1px solid var(--line)}
-.chip.cost{color:var(--bad);border-color:#f3d5d1;background:#fdf4f3}
-.chip.time{color:var(--good);border-color:#cfeade;background:#f2fbf6}
+.chip.cost{color:var(--bad);border-color:#F4D9CC;background:#FFF5F0}
+.chip.time{color:var(--good);border-color:#CFE7DB;background:#F3FAF6}
 .fixcard dl{display:grid;gap:10px;margin-top:4px}
 .fixcard dt{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-bottom:2px}
 .fixcard dd{color:var(--body)}
 .quote{background:var(--panel);border-left:3px solid var(--line);padding:10px 14px;border-radius:0 6px 6px 0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;color:var(--ink);word-break:break-word}
-.do{background:#f2fbf6;border-left:3px solid var(--good);padding:10px 14px;border-radius:0 6px 6px 0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;color:#14532d;word-break:break-word}
+.do{background:#F3FAF6;border-left:3px solid var(--good);padding:10px 14px;border-radius:0 6px 6px 0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;color:#0B5134;word-break:break-word}
 
 /* ---------- screenshots ---------- */
 .shots{display:grid;grid-template-columns:1fr 200px;gap:26px;align-items:start}
 @media(max-width:700px){.shots{grid-template-columns:1fr}}
 .shot{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
 .shot .bar{display:flex;align-items:center;gap:5px;padding:9px 12px;border-bottom:1px solid var(--line);background:#fff}
-.shot .bar i{width:8px;height:8px;border-radius:50%;background:#e0e0e6;display:block}
+.shot .bar i{width:8px;height:8px;border-radius:50%;background:#DED7CC;display:block}
 .shot .bar span{margin-left:8px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
 .shot img{display:block;width:100%;height:auto}
 .shot.phone{border-radius:18px}
@@ -98,8 +98,8 @@ a{color:var(--accent)}
 .finding .t{display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap}
 .finding .t b{color:var(--ink);font-size:16px}
 .sev{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:4px}
-.sev-high{background:#fdf0ee;color:var(--bad)}
-.sev-med{background:#fdf7e9;color:#96660f}
+.sev-high{background:#FFF1EA;color:var(--bad)}
+.sev-med{background:#FCF6E7;color:#8A6508}
 .sev-low{background:var(--panel);color:var(--soft)}
 .clean{color:var(--good);font-weight:700}
 
@@ -141,8 +141,8 @@ td:last-child,th:last-child{text-align:right}
       </div>
       <div class="ring">
         <svg width="132" height="132" viewBox="0 0 132 132">
-          <circle cx="66" cy="66" r="54" fill="none" stroke="#e6e6ea" stroke-width="11"/>
-          <circle cx="66" cy="66" r="54" fill="none" stroke="#e2522b" stroke-width="11"
+          <circle cx="66" cy="66" r="54" fill="none" stroke="#E8E2D9" stroke-width="11"/>
+          <circle cx="66" cy="66" r="54" fill="none" stroke="#FF4500" stroke-width="11"
                   stroke-linecap="round" stroke-dasharray="{{SCORE_DASH}}"/>
         </svg>
         <div class="num"><b>{{SCORE}}</b><span>out of 100</span></div>
@@ -184,7 +184,10 @@ td:last-child,th:last-child{text-align:right}
 
   <div class="rule"></div>
 
-  <!-- ============ 3. WHAT IT LOOKS LIKE ============ -->
+  <!-- ============ 3. WHAT IT LOOKS LIKE ============
+       OPTIONAL. Keep this section only if both screenshots are embedded as base64
+       data URIs. If you could not capture or embed them, DELETE the whole section
+       (through the next .rule) and say so in the caveats box. Never ship empty frames. -->
   <div class="pad">
     <div class="eyebrow">What a customer sees</div>
     <h2>Desktop and phone</h2>
