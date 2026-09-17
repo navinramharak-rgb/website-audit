@@ -163,7 +163,7 @@ One self-contained HTML file, both screenshots embedded as base64 data URIs, no 
 
 Lead with:
 1. The score and the verdict
-2. **Fix these three this week** — the three highest impact, lowest effort items, each with what to change, why it matters in money or enquiries, and roughly how long
+2. **Fix these three this week**: the three highest impact, lowest effort items, each with what to change, why it matters in money or enquiries, and roughly how long
 3. Everything else, grouped, ordered by impact
 
 Every finding carries: what you found (quoted), why it costs them, and the specific fix. No finding without a fix.

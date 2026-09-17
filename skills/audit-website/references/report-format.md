@@ -43,13 +43,13 @@ Never ship empty frames, a file path, or a link to an image on your own machine.
 
 ## Order, which is not negotiable
 
-1. **Masthead** — business, URL, date, score ring, verdict box.
+1. **Masthead**: business, URL, date, score ring, verdict box.
 2. **Fix these three this week.** The whole value of the report. Nothing above it.
 3. **The two screenshots**, desktop and phone, side by side.
-4. **The seven lenses** — score table first, then the findings under each lens.
+4. **The seven lenses**: score table first, then the findings under each lens.
 5. **What I couldn't check.** Never silently omit a failed check.
 6. **The later pile**, honestly labelled as not urgent.
-7. **What to do next** — the named handoff.
+7. **What to do next**: the named handoff.
 
 The reason "the three" sits above the detail: an owner reads the top of a report and skims the rest. Put the money at the top.
 
@@ -70,9 +70,9 @@ A finding with no fix is not a finding, it is a complaint. Cut it.
 ### Severity
 Every finding gets `sev-high`, `sev-med` or `sev-low`. Use them honestly. If everything is high, nothing is.
 
-- **High** — costing enquiries right now.
-- **Med** — costing some, or will as they grow.
-- **Low** — worth doing, nobody is losing money over it today.
+- **High**: costing enquiries right now.
+- **Med**: costing some, or will as they grow.
+- **Low**: worth doing, nobody is losing money over it today.
 
 ---
 

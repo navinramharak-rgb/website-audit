@@ -1,4 +1,4 @@
-<img src="assets/banner.png" alt="Website Audit — Build With Nav" width="100%">
+<img src="assets/banner.png" alt="Website Audit: Build With Nav" width="100%">
 
 <p>
 <img alt="Licence MIT" src="https://img.shields.io/badge/licence-MIT-FF4500?style=flat-square">
@@ -60,8 +60,8 @@ Schema markup injected by JavaScript is invisible to a plain fetch, because fetc
 ## Chains with
 
 1. **Website Audit** ← you are here. Find out what's actually wrong.
-2. **[Local SEO](https://github.com/navinramharak-rgb/local-seo)** — for local businesses, where the Google Business Profile usually does more work than the website. Free, takes an hour.
-3. **[50k Website Builder](https://github.com/navinramharak-rgb/50k-website-builder)** — when the verdict is rebuild, hand it this audit as the brief instead of starting from a blank page.
+2. **[Local SEO](https://github.com/navinramharak-rgb/local-seo)**: for local businesses, where the Google Business Profile usually does more work than the website. Free, takes an hour.
+3. **[50k Website Builder](https://github.com/navinramharak-rgb/50k-website-builder)**: when the verdict is rebuild, hand it this audit as the brief instead of starting from a blank page.
 
 For much deeper technical SEO (hreflang, crawl budget, international, programmatic pages), use [Corey Haines' marketing skills](https://github.com/coreyhaines31/marketingskills). Excellent library that goes further on that axis. This skill points at it rather than duplicating it.
 
